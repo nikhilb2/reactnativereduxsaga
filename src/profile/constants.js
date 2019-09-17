@@ -1,0 +1,9 @@
+export const RESTORE_SESSION = 'RESTORE_SESSION'
+export const RESTORE_SESSION_SUCCESS = 'RESTORE_SESSION_SUCCESS'
+
+export const SIGNUP = 'SIGNUP'
+export const SIGNUP_FAILED = 'SIGNUP_FAILED'
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
+
+export const LOGOUT = 'LOGOUT'
+export const LOGOUT_DONE = 'LOGOUT_DONE'
