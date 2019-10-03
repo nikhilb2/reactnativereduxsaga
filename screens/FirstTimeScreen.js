@@ -13,6 +13,8 @@ import {
 import theme from '../src/theme'
 import InputField from '../components/inputfield'
 import Button from '../components/button'
+import { restoreSession, signup } from "../src/profile/actions"
+import { connect } from "react-redux"
 
 class FirstTimeScreen extends Component {
 
@@ -21,6 +23,11 @@ class FirstTimeScreen extends Component {
   user: null
 }
 
+  async componentDidMount() {
+    const { restoreSession, navigation } = this.props
+    await restoreSession()
+    navigation.navigate('Main')
+  }
 
   render() {
     const { navigation } = this.props
@@ -103,6 +110,20 @@ const styles = StyleSheet.create({
     margin: theme.spacing.unit,
 
   }
-});
+})
 
-export default FirstTimeScreen
+
+const mapStateToProps = state => ({
+  user: state.profileReducer.user,
+  authorized: state.profileReducer.authorized,
+})
+
+const mapDispatchToProps = dispatch => ({
+  restoreSession: () => dispatch(restoreSession()),
+  signup: (name, origin, gender) => dispatch(signup(name, origin, gender)),
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(FirstTimeScreen)
