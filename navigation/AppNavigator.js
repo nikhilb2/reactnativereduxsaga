@@ -19,6 +19,6 @@ export default createAppContainer(createSwitchNavigator(
     App: MainStack
   },
   {
-    initialRouteName: 'Splash'
+    initialRouteName: 'App'
   }
 ))
